@@ -18,8 +18,10 @@ export default function LoginPage() {
       setloading(true);
       const response = await axios.post("/api/users/login", user);
       console.log("response:", response);
-      toast.success("Login success");
-      // router.push("/profile");
+      if (response) {
+        toast.success("Login success");
+        router.push("/profile");
+      }
     } catch (error: any) {
       toast.error(error.message);
     } finally {
