@@ -17,7 +17,6 @@ export default function LoginPage() {
     try {
       setloading(true);
       const response = await axios.post("/api/users/login", user);
-      console.log("response:", response);
       if (response) {
         toast.success("Login success");
         router.push("/profile");
@@ -66,6 +65,7 @@ export default function LoginPage() {
         {buttonDisabled ? "Login In" : "Signup"}
       </button>
       <Link href="/login">Visit Login</Link>
+      <Link href="/forgotpassword">Forgot Password</Link>
     </div>
   );
 }

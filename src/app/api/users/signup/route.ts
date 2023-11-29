@@ -11,7 +11,6 @@ export const POST = async (request: NextRequest) => {
     const { username, password, email } = reqBodyAwait;
 
     let existingUser = await User.findOne({ email: email });
-
     if (existingUser) {
       return NextResponse.json({ error: "User ALready exists" });
     }
@@ -25,7 +24,6 @@ export const POST = async (request: NextRequest) => {
     });
 
     await sendEmail({ email, emailType: "VERIFY", userId: newUser._id });
-    
     return NextResponse.json({
       message: "user created successfully",
       success: true,
